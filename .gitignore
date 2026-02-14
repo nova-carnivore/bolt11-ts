@@ -29,3 +29,8 @@ yarn-error.log*
 # Environment
 .env
 .env.local
+
+# Playwright
+test/browser-bundle.js
+test-results/
+playwright-report/

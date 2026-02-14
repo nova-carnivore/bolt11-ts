@@ -27,7 +27,7 @@ npm install @nova-carnivore/bolt11-ts
 | **Node.js** 20+ | ✅ Tested in CI | Full support |
 | **Bun** 1.x | ✅ Tested in CI | Full support |
 | **Deno** 2.x | ✅ Tested in CI | Use `--unstable-sloppy-imports` for `.js` extensions |
-| **Browsers** | ✅ Compatible | No Node.js APIs used, bundle with your preferred bundler |
+| **Browsers** (Chromium, Firefox, WebKit) | ✅ Tested in CI | Playwright tests against real browser engines |
 
 No polyfills required — uses `@noble/hashes` for SHA-256, `TextEncoder`/`TextDecoder`, and `@noble/secp256k1` which are all universal.
 
