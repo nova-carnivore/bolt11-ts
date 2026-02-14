@@ -17,7 +17,7 @@ The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been u
 ## Installation
 
 ```bash
-npm install @nova-carnivore/bolt11-ts
+npm install bolt11-ts
 ```
 
 ## Runtime Compatibility
@@ -34,7 +34,7 @@ No polyfills required — uses `@noble/hashes` for SHA-256, `TextEncoder`/`TextD
 ## Quick Start
 
 ```typescript
-import { decode, encode, sign } from '@nova-carnivore/bolt11-ts';
+import { decode, encode, sign } from 'bolt11-ts';
 
 // Decode a payment request
 const invoice = 'lnbc2500u1pvjluezsp5zyg3zyg3zyg3...';
@@ -145,7 +145,7 @@ import * as bolt11 from 'bolt11';
 const decoded = bolt11.decode('lnbc...');
 
 // New:
-import { decode } from '@nova-carnivore/bolt11-ts';
+import { decode } from 'bolt11-ts';
 const decoded = await decode('lnbc...');
 // Note: decode() is now async due to crypto operations
 ```

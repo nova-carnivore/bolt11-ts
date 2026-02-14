@@ -1,5 +1,5 @@
 {
-  "name": "@nova-carnivore/bolt11-ts",
+  "name": "bolt11-ts",
   "version": "0.1.0",
   "description": "Modern TypeScript BOLT 11 Lightning Network payment request encoder/decoder with zero vulnerable dependencies",
   "type": "module",
