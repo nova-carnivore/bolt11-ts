@@ -1,6 +1,6 @@
 {
   "name": "bolt11-ts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Modern TypeScript BOLT 11 Lightning Network payment request encoder/decoder with zero vulnerable dependencies",
   "type": "module",
   "main": "./dist/index.js",
