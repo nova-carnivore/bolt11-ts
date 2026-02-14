@@ -6,7 +6,7 @@ Modern TypeScript implementation of BOLT 11 Lightning Network payment request en
 
 The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been updated in years and has a large dependency tree (including `elliptic`). This library is a complete rewrite in TypeScript that:
 
-- ✅ **Minimal dependencies** - Only depends on `@noble/secp256k1` (audited, zero transitive deps)
+- ✅ **Minimal dependencies** - Only depends on `@noble/secp256k1` and `@noble/hashes` (audited, zero transitive deps)
 - ✅ **Full BOLT 11 compliance** - Passes all specification test vectors
 - ✅ **Modern TypeScript** - Full type safety and excellent IDE support
 - ✅ **ESM native** - Built for modern JavaScript
@@ -29,7 +29,7 @@ npm install @nova-carnivore/bolt11-ts
 | **Deno** 2.x | ✅ Tested in CI | Use `--unstable-sloppy-imports` for `.js` extensions |
 | **Browsers** | ✅ Compatible | No Node.js APIs used, bundle with your preferred bundler |
 
-No polyfills required — uses pure JavaScript SHA-256, `TextEncoder`/`TextDecoder`, and `@noble/secp256k1` which are all universal.
+No polyfills required — uses `@noble/hashes` for SHA-256, `TextEncoder`/`TextDecoder`, and `@noble/secp256k1` which are all universal.
 
 ## Quick Start
 
@@ -250,12 +250,12 @@ All test vectors from the specification are included in the test suite and pass.
 
 ### Minimal Dependency Tree
 
-This library has only one production dependency: [`@noble/secp256k1`](https://github.com/paulmillr/noble-secp256k1), which:
-- Has zero dependencies itself
-- Is audited and widely used
-- Is maintained by Paul Miller (@paulmillr)
+This library has two production dependencies, both from the audited [@noble](https://paulmillr.com/noble/) family by Paul Miller:
 
-A minimal dependency tree reduces the attack surface compared to the original `bolt11` package.
+- [`@noble/secp256k1`](https://github.com/paulmillr/noble-secp256k1) — elliptic curve cryptography
+- [`@noble/hashes`](https://github.com/paulmillr/noble-hashes) — SHA-256 hashing
+
+Both have zero transitive dependencies, are audited, and work across all runtimes. A minimal dependency tree reduces the attack surface compared to the original `bolt11` package.
 
 ### Reporting Vulnerabilities
 
