@@ -79,8 +79,14 @@ test('encode creates unsigned invoice object in browser', async ({ page }) => {
       satoshis: 1000,
       timestamp: 1496314658,
       tags: [
-        { tagName: 'payment_hash', data: '0001020304050607080900010203040506070809000102030405060708090102' },
-        { tagName: 'payment_secret', data: '1111111111111111111111111111111111111111111111111111111111111111' },
+        {
+          tagName: 'payment_hash',
+          data: '0001020304050607080900010203040506070809000102030405060708090102',
+        },
+        {
+          tagName: 'payment_secret',
+          data: '1111111111111111111111111111111111111111111111111111111111111111',
+        },
         { tagName: 'description', data: 'test' },
       ],
     });
