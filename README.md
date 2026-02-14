@@ -1,12 +1,12 @@
 # bolt11-ts
 
-Modern TypeScript implementation of BOLT 11 Lightning Network payment request encoder/decoder with **zero vulnerable dependencies**.
+Modern TypeScript implementation of BOLT 11 Lightning Network payment request encoder/decoder with a minimal dependency tree.
 
 ## Why bolt11-ts?
 
-The original [bolt11](https://github.com/bitcoinjs/bolt11) library has accumulated several vulnerabilities over time due to its dependency tree. This library is a complete rewrite in TypeScript that:
+The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been updated in years and has a large dependency tree (including `elliptic`). This library is a complete rewrite in TypeScript that:
 
-- ✅ **Zero vulnerable dependencies** - Only depends on `@noble/secp256k1` (which itself has zero dependencies)
+- ✅ **Minimal dependencies** - Only depends on `@noble/secp256k1` (audited, zero transitive deps)
 - ✅ **Full BOLT 11 compliance** - Passes all specification test vectors
 - ✅ **Modern TypeScript** - Full type safety and excellent IDE support
 - ✅ **ESM native** - Built for modern JavaScript
@@ -236,19 +236,14 @@ All test vectors from the specification are included in the test suite and pass.
 
 ## Security
 
-### Dependency Audit
+### Minimal Dependency Tree
 
-This library has **zero vulnerable dependencies**:
-
-```bash
-npm audit
-# 0 vulnerabilities
-```
-
-The only production dependency is [`@noble/secp256k1`](https://github.com/paulmillr/noble-secp256k1), which:
+This library has only one production dependency: [`@noble/secp256k1`](https://github.com/paulmillr/noble-secp256k1), which:
 - Has zero dependencies itself
 - Is audited and widely used
 - Is maintained by Paul Miller (@paulmillr)
+
+A minimal dependency tree reduces the attack surface compared to the original `bolt11` package.
 
 ### Reporting Vulnerabilities
 
