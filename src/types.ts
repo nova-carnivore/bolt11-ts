@@ -24,6 +24,12 @@ export const NETWORKS: Record<string, Network> = {
     scriptHash: 0xc4,
     validWitnessVersions: [0, 1],
   },
+  signet: {
+    bech32: 'tbs',
+    pubKeyHash: 0x6f,
+    scriptHash: 0xc4,
+    validWitnessVersions: [0, 1],
+  },
   regtest: {
     bech32: 'bcrt',
     pubKeyHash: 0x6f,
@@ -139,7 +145,7 @@ export interface PaymentRequestObject {
  * Options for encoding a payment request
  */
 export interface EncodeOptions {
-  network?: Network;
+  network?: Network | string;
   satoshis?: number;
   millisatoshis?: string | number;
   timestamp?: number;

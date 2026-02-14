@@ -39,18 +39,39 @@ const TAG_NAME_TO_CODE: Record<string, number> = {
   metadata: 27,
 };
 
+/* ── Resolve network ───────────────────────────────────────────────────────── */
+
+function resolveNetwork(network?: Network | string): Network {
+  if (!network) return NETWORKS.bitcoin;
+  if (typeof network === 'object' && 'bech32' in network) return network;
+
+  // Try by name first (e.g. 'bitcoin', 'testnet')
+  if (typeof network === 'string') {
+    if (NETWORKS[network]) return NETWORKS[network];
+    // Try by bech32 prefix (e.g. 'bc', 'tb', 'bcrt', 'tbs')
+    for (const net of Object.values(NETWORKS)) {
+      if (net.bech32 === network) return net;
+    }
+    throw new Error(`Unknown network: "${network}"`);
+  }
+  throw new Error(`Invalid network parameter`);
+}
+
 /* ── Encode (unsigned) ─────────────────────────────────────────────────────── */
 
 export function encode(options: EncodeOptions): PaymentRequestObject {
-  const network = options.network ?? NETWORKS.bitcoin;
+  const network = resolveNetwork(options.network);
   const timestamp = options.timestamp ?? getCurrentTimestamp();
 
   validateTags(options.tags);
 
   const hrp = buildHRP(network, options.satoshis, options.millisatoshis);
-  // const timestampWords = intToWords(timestamp, 7);
-  // const tagWords = encodeAllTags(options.tags);
-  // const dataWords = [...timestampWords, ...tagWords]; // TODO: use for signing
+  const timestampWords = intToWords(timestamp, 7);
+  const tagWords = encodeAllTags(options.tags);
+  const dataWords = [...timestampWords, ...tagWords];
+
+  // Generate wordsTemp — the bech32-encoded string without signature
+  const wordsTemp = bech32Encode(hrp, dataWords);
 
   const tagsObj = buildTagsObject(options.tags);
   const expireTime = tagsObj.expire_time ?? 3600;
@@ -59,7 +80,7 @@ export function encode(options: EncodeOptions): PaymentRequestObject {
   return {
     complete: false,
     prefix: hrp,
-    wordsTemp: '',
+    wordsTemp,
     network,
     satoshis: options.satoshis ?? null,
     millisatoshis: options.millisatoshis?.toString() ?? null,
@@ -107,6 +128,7 @@ export async function sign(
 
   return {
     ...pr,
+    prefix: hrp,
     paymentRequest,
     complete: true,
     signature: bytesToHex(signature),
@@ -171,6 +193,7 @@ function encodeTag(tag: TagData): number[] {
 
   const tagWords = encodeTagData(tag);
   const len = tagWords.length;
+  // Length is encoded as two 5-bit words (10 bits, max 1023)
   return [code, (len >> 5) & 0x1f, len & 0x1f, ...tagWords];
 }
 
@@ -219,7 +242,6 @@ function encodeTagData(tag: TagData): number[] {
 
     case 'feature_bits': {
       // Encode from the FeatureBits object back to 5-bit words.
-      // Simplified: just store the word_length of zeros (overridden below if needed).
       const fb = tag.data;
       const totalBits = fb.word_length * 5;
       const bits = new Uint8Array(totalBits);

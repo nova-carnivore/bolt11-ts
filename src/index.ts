@@ -5,6 +5,7 @@
 
 export { decode } from './decode.js';
 export { encode, sign } from './encode.js';
+export { satToHrp, millisatToHrp, hrpToSat, hrpToMillisat } from './helpers.js';
 export { NETWORKS } from './types.js';
 export type {
   Network,
