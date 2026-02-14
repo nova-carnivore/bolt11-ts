@@ -53,8 +53,17 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
       
+      - name: Setup Node.js (for tsc build)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+      
       - name: Install dependencies
-        run: bun install
+        run: npm ci
+      
+      - name: Build
+        run: npm run build
       
       - name: Run tests
         run: bun test
@@ -71,7 +80,7 @@ jobs:
         with:
           deno-version: v2.x
       
-      - name: Setup Node.js (for npm install)
+      - name: Setup Node.js (for npm install + build)
         uses: actions/setup-node@v4
         with:
           node-version: 22.x
@@ -79,6 +88,9 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+      
+      - name: Build
+        run: npm run build
       
       - name: Run tests
         run: deno test --allow-read --no-check --unstable-sloppy-imports test/
