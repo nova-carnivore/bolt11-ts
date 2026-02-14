@@ -12,7 +12,7 @@ The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been u
 - ✅ **ESM native** - Built for modern JavaScript
 - ✅ **Universal runtime** - Works in Node.js, Bun, Deno, and browsers (no polyfills needed)
 - ✅ **Well tested** - Comprehensive test suite including spec vectors
-- ✅ **Drop-in replacement** - Compatible API with the original library
+- ✅ **Easy migration** - Similar API to the original library (see [migration guide](#migration-from-bolt11))
 
 ## Installation
 
@@ -137,7 +137,7 @@ console.log(signed.paymentRequest); // Full encoded payment request
 
 ## Migration from bolt11
 
-This library is designed as a drop-in replacement:
+This library has a similar API but is **not** a drop-in replacement — key methods are now async:
 
 ```typescript
 // Old:
