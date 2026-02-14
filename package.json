@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "test": "node --test test/*.test.ts",
+    "test": "npm run build && tsx --test --experimental-test-coverage test/*.test.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
