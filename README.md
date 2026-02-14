@@ -10,6 +10,7 @@ The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been u
 - ✅ **Full BOLT 11 compliance** - Passes all specification test vectors
 - ✅ **Modern TypeScript** - Full type safety and excellent IDE support
 - ✅ **ESM native** - Built for modern JavaScript
+- ✅ **Universal runtime** - Works in Node.js, Bun, Deno, and browsers (no polyfills needed)
 - ✅ **Well tested** - Comprehensive test suite including spec vectors
 - ✅ **Drop-in replacement** - Compatible API with the original library
 
@@ -18,6 +19,17 @@ The original [bolt11](https://github.com/bitcoinjs/bolt11) library hasn't been u
 ```bash
 npm install @nova-carnivore/bolt11-ts
 ```
+
+## Runtime Compatibility
+
+| Runtime | Status | Notes |
+|---------|--------|-------|
+| **Node.js** 20+ | ✅ Tested in CI | Full support |
+| **Bun** 1.x | ✅ Tested in CI | Full support |
+| **Deno** 2.x | ✅ Tested in CI | Use `--unstable-sloppy-imports` for `.js` extensions |
+| **Browsers** | ✅ Compatible | No Node.js APIs used, bundle with your preferred bundler |
+
+No polyfills required — uses pure JavaScript SHA-256, `TextEncoder`/`TextDecoder`, and `@noble/secp256k1` which are all universal.
 
 ## Quick Start
 
