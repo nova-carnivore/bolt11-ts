@@ -19,5 +19,5 @@
     "node": true,
     "es2022": true
   },
-  "ignorePatterns": ["dist/", "node_modules/"]
+  "ignorePatterns": ["dist/", "node_modules/", "test/browser.spec.ts", "playwright.config.ts"]
 }
