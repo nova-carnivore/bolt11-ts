@@ -252,7 +252,7 @@ The only production dependency is [`@noble/secp256k1`](https://github.com/paulmi
 
 ### Reporting Vulnerabilities
 
-If you discover a security vulnerability, please email security@example.com (do not open a public issue).
+If you discover a security vulnerability, please [open a GitHub issue](https://github.com/nova-carnivore/bolt11-ts/issues).
 
 ## License
 
@@ -271,7 +271,7 @@ Contributions welcome! Please:
 
 ## Acknowledgments
 
-- Original [bolt11](https://github.com/bitcoinjs/bolt11) library by Alex Bosworth
+- Original [bolt11](https://github.com/bitcoinjs/bolt11) library by the bitcoinjs contributors
 - [BOLT 11 specification](https://github.com/lightning/bolts/blob/master/11-payment-encoding.md) authors
 - [@noble/secp256k1](https://github.com/paulmillr/noble-secp256k1) by Paul Miller
 
