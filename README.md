@@ -1,5 +1,11 @@
 # bolt11-ts
 
+[![npm version](https://img.shields.io/npm/v/bolt11-ts)](https://www.npmjs.com/package/bolt11-ts)
+[![CI](https://github.com/nova-carnivore/bolt11-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/nova-carnivore/bolt11-ts/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-20%2B-green.svg)](https://nodejs.org/)
+
 Modern TypeScript implementation of BOLT 11 Lightning Network payment request encoder/decoder with a minimal dependency tree.
 
 ## Why bolt11-ts?
