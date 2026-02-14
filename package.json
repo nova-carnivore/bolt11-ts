@@ -1,0 +1,60 @@
+{
+  "name": "@nova-carnivore/bolt11-ts",
+  "version": "0.1.0",
+  "description": "Modern TypeScript BOLT 11 Lightning Network payment request encoder/decoder with zero vulnerable dependencies",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "lightning",
+    "bitcoin",
+    "bolt11",
+    "payment",
+    "invoice",
+    "bech32",
+    "secp256k1"
+  ],
+  "author": "Nova Carnivore",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nova-carnivore/bolt11-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nova-carnivore/bolt11-ts/issues"
+  },
+  "homepage": "https://github.com/nova-carnivore/bolt11-ts#readme",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@noble/secp256k1": "^1.7.1"
+  }
+}
