@@ -39,7 +39,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nova-carnivore/bolt11-ts.git"
+    "url": "git+https://github.com/nova-carnivore/bolt11-ts.git"
   },
   "bugs": {
     "url": "https://github.com/nova-carnivore/bolt11-ts/issues"
